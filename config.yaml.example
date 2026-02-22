@@ -1,0 +1,54 @@
+# FreeIPA MCP Server Configuration
+# Copy this file to config.yaml and update with your values
+#
+# IMPORTANT SECURITY NOTE:
+# - DO NOT put passwords or API keys in this file
+# - Use environment variables for all sensitive credentials
+# - This file is for non-sensitive configuration only
+
+# FreeIPA Server Configuration
+freeipa:
+  # FreeIPA server hostname or IP
+  server: ipa.example.com
+
+  # FreeIPA username (must include Kerberos realm)
+  # For security, set password via FREEIPA_PASSWORD environment variable
+  username: automation@EXAMPLE.COM
+
+  # Verify SSL certificates (set to false for self-signed certs)
+  verifySSL: false
+
+  # API request timeout in milliseconds
+  timeout: 30000
+
+# SSH Configuration for Remote Host Management
+ssh:
+  # SSH username for connecting to managed hosts
+  # For security, set password via SSH_PASSWORD environment variable
+  # Note: This user must have passwordless sudo privileges
+  username: automation
+
+  # SSH port (default: 22)
+  port: 22
+
+  # SSH connection timeout in milliseconds
+  timeout: 20000
+
+# SSSD Configuration
+sssd:
+  # Domain name used in SSSD configuration
+  # This is the domain section in /etc/sssd/sssd.conf
+  domain: example.com
+
+  # Testing mode cache timeouts (in seconds)
+  testing:
+    entryCacheTimeout: 60
+    sudoTimeout: 120
+
+  # Production mode cache timeouts (in seconds)
+  production:
+    entryCacheTimeout: 300
+    sudoTimeout: 600
+
+# Optional: Debug logging
+debug: false

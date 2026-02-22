@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "irq-freeipa": {
+      "command": "node",
+      "args": ["./build/index.js"]
+    }
+  }
+}
